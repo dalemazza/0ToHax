@@ -59,12 +59,12 @@ installs+="locate"
 
 apter $installs
 # Info
-git clone https://github.com/HitmanAlharbi/Windows-AD-attacking ~/Info/
-git clone https://github.com/0xJs/RedTeaming_CheatSheet ~/Info/
+git clone https://github.com/HitmanAlharbi/Windows-AD-attacking ~/Info/Windows-AD-attacking
+git clone https://github.com/0xJs/RedTeaming_CheatSheet ~/Info/RedTeaming_CheatSheet
 python3 -m pip install  grip
 # General Hacking
 apter sqlmap
-git clone https://github.com/danielmiessler/SecLists ~/Lists/
+git clone https://github.com/danielmiessler/SecLists ~/Lists/SecLists
 python3 -m pip install dirsearch
 python3 -m pip install pyftpdlib
 python3 -m pip install updog
@@ -75,9 +75,9 @@ sudo gem install wpscan
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -O ~/Tools/Linux/linpeas.sh
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/Tools/Linux/pspy64
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32 -O ~/Tools/Linux/pspy32
-git clone https://github.com/arthaud/git-dumper ~/Tools/Linux/
-git clone https://github.com/internetwache/GitTools ~/Tools/Linux/
-git clone https://github.com/nsonaniya2010/SubDomainizer ~/Tools/Linux/
+git clone https://github.com/arthaud/git-dumper ~/Tools/Linux/Git-Dumper
+git clone https://github.com/internetwache/GitTools ~/Tools/Linux/Git-Tools
+git clone https://github.com/nsonaniya2010/SubDomainizer ~/Tools/Linux/SubDomainizer
 # Windows Hacking
 snapper crackmapexec
 snapper impacket
@@ -85,19 +85,19 @@ snapper enum4linux
 apter ruby-dev
 sudo gem install evil-winrm
 ## Generic
-git clone https://github.com/SpiderLabs/Responder ~/Tools/Windows/Generic
+git clone https://github.com/SpiderLabs/Responder ~/Tools/Windows/Generic/Responder 
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O ~/Tools/Windows/Generic/kerbrute
 chmod +x ~/Tools/Windows/Generic/kerbrute
 ## Powershell
 wget https://raw.githubusercontent.com/itm4n/PrivescCheck/master/PrivescCheck.ps1 -P ~/Tools/Windows/Powershell/
-git clone https://github.com/PowerShellMafia/PowerSploit ~/Tools/Windows/Powershell
+git clone https://github.com/PowerShellMafia/PowerSploit ~/Tools/Windows/Powershell/PowerSploit
 ## CVEs
-git clone https://github.com/dirkjanm/CVE-2020-1472 ~/Tools/Windows/CVEs
+git clone https://github.com/dirkjanm/CVE-2020-1472 ~/Tools/Windows/CVEs/ZeroLogon
 ## Exes
-git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries ~/Tools/Windows/Exes
-git clone https://github.com/ParrotSec/mimikatz ~/Tools/Windows/Exes
-wget https://download.sysinternals.com/files/SysinternalsSuite.zip -P ~/Tools/Windows/Exes
-unzip ~/Tools/Windows/Exes/SysinternalsSuite.zip
+git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries ~/Tools/Windows/Exes/Ghostpack-CompiledBinaries
+git clone https://github.com/ParrotSec/mimikatz ~/Tools/Windows/Exes/mimikatz
+wget https://download.sysinternals.com/files/SysinternalsSuite.zip -P ~/Tools/Windows/Exes/
+unzip ~/Tools/Windows/Exes/SysinternalsSuite.zip -d ~/Tools/Windows/Exes/Sysinternals/
 rm ~/Tools/Windows/Exes/SysinternalsSuite.zip
 
 
@@ -124,5 +124,11 @@ sudo docker pull bannsec/bloodhound
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 chmod 755 msfinstall
 ./msfinstall
+rm msfinstall
 
 # Metasploit End
+
+# update file locations
+sudo updatedb
+# Just cause
+sudo apt upgrade -y
