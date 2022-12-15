@@ -1,5 +1,7 @@
 #!/bin/bash
 
+installs=""
+
 ## Apt installer
 apter () {
     sudo apt install -y $1
@@ -30,30 +32,32 @@ mkdir ~/Tools/Windows/Exes
 
 
 # Quality of life
-apter vim
-apter python3
-apter python3-pip
-apter net-tools
-apter git
-apter tilix
-apter wireshark
-apter wine
-apter mono-complete
-apter curl
-apter nfs-common
-apter openvpn
-apter sqsh
-apter ltrace
-apter strace
-apter ntpdate
-apter ffuf
-apter wfuzz
-apter hexedit
-apter binwalk
-apter smbclient
-apter unzip
-apter nmap
+installs+="vim "
+installs+="python3 "
+installs+="python3-pip "
+installs+="net-tools "
+installs+="git "
+installs+="tilix "
+installs+="wireshark "
+installs+="wine "
+installs+="mono-complete "
+installs+="curl "
+installs+="nfs-common "
+installs+="openvpn "
+installs+="sqsh "
+installs+="ltrace "
+installs+="strace "
+installs+="ntpdate "
+installs+="ffuf "
+installs+="wfuzz "
+installs+="hexedit "
+installs+="binwalk "
+installs+="smbclient "
+installs+="unzip "
+installs+="nmap "
+installs+="locate "
 
+apter $installs
 # Info
 git clone https://github.com/HitmanAlharbi/Windows-AD-attacking ~/Info/
 git clone https://github.com/0xJs/RedTeaming_CheatSheet ~/Info/
