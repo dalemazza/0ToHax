@@ -4,7 +4,7 @@ installs=""
 
 ## Apt installer
 apter () {
-    sudo apt install -y $1
+    sudo apt install -y $@
 }
 
 ## Snap installer
@@ -55,7 +55,7 @@ installs+="binwalk "
 installs+="smbclient "
 installs+="unzip "
 installs+="nmap "
-installs+="locate "
+installs+="locate"
 
 apter $installs
 # Info
