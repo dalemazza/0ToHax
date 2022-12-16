@@ -17,6 +17,19 @@ alias () {
     echo "$@" >> ~/.bashrc
 }
 
+## Waiter
+waiter() {
+    echo "Press any key to continue once burp is ready!"
+    while [ true ] ; do
+    read -t 3 -n 1
+    if [ $? = 0 ] ; then
+    exit ;
+    else
+    echo "waiting for the keypress"
+    fi
+    done
+}
+
 # All from home
 cd ~
 
@@ -67,6 +80,7 @@ installs+="nmap "
 installs+="hydra "
 installs+="john "
 installs+="hashcat "
+installs+="libnss3-tools"
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="locate"
 
@@ -167,6 +181,14 @@ wget "https://portswigger-cdn.net/burp/releases/download?product=community&versi
 bash ~/burp
 rm ~/burp
 ###
+
+### Burp Certs into firefox
+f_profile=$(ls -Al ~/snap/firefox/common/.mozilla/firefox/ | grep ".default" | cut -d " " -f 9)
+waiter()
+wget http://burp/cert -O burp.crt -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080
+certutil -A -n "burp" -t "TC,," -i ~/burp.crt -d sql:/home/magna/snap/firefox/common/.mozilla/firefox/$f_profile
+###
+
 
 ### Budgie?
 read -p 'Yo? You Want budgie desktop? (y) or (n): ' answer
