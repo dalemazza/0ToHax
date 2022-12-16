@@ -4,7 +4,7 @@ installs=""
 
 ## Apt installer
 apter () {
-    sudo apt install -y $@
+    sudo apt install -qq -y $@
 }
 
 ## Snap installer
@@ -12,9 +12,18 @@ snapper () {
     sudo snap install $1
 }
 
+## Alias adder
+alias () {
+    echo "$@" >> ~/.bashrc
+}
+
+# All from home
+cd ~
 
 # Update init
 sudo apt update
+# Just cause
+sudo apt upgrade -y
 
 # Setup
 ## General
@@ -55,6 +64,10 @@ installs+="binwalk "
 installs+="smbclient "
 installs+="unzip "
 installs+="nmap "
+installs+="hydra "
+installs+="john "
+installs+="hashcat "
+installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="locate"
 
 apter $installs
@@ -69,8 +82,6 @@ python3 -m pip install dirsearch
 python3 -m pip install pyftpdlib
 python3 -m pip install updog
 sudo gem install wpscan
-
-
 # Linux Hacking
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -O ~/Tools/Linux/linpeas.sh
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/Tools/Linux/pspy64
@@ -84,16 +95,16 @@ snapper impacket
 snapper enum4linux
 apter ruby-dev
 sudo gem install evil-winrm
-## Generic
+## Windows Generic
 git clone https://github.com/SpiderLabs/Responder ~/Tools/Windows/Generic/Responder 
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O ~/Tools/Windows/Generic/kerbrute
 chmod +x ~/Tools/Windows/Generic/kerbrute
 ## Powershell
 wget https://raw.githubusercontent.com/itm4n/PrivescCheck/master/PrivescCheck.ps1 -P ~/Tools/Windows/Powershell/
 git clone https://github.com/PowerShellMafia/PowerSploit ~/Tools/Windows/Powershell/PowerSploit
-## CVEs
+## Windows CVEs
 git clone https://github.com/dirkjanm/CVE-2020-1472 ~/Tools/Windows/CVEs/ZeroLogon
-## Exes
+## Windows Exes
 git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries ~/Tools/Windows/Exes/Ghostpack-CompiledBinaries
 git clone https://github.com/ParrotSec/mimikatz ~/Tools/Windows/Exes/mimikatz
 wget https://download.sysinternals.com/files/SysinternalsSuite.zip -P ~/Tools/Windows/Exes/
@@ -101,7 +112,24 @@ unzip ~/Tools/Windows/Exes/SysinternalsSuite.zip -d ~/Tools/Windows/Exes/Sysinte
 rm ~/Tools/Windows/Exes/SysinternalsSuite.zip
 
 
-# Docker Start
+
+# Powershell start
+# Install pre-requisite packages.
+sudo apt-get install -y wget apt-transport-https software-properties-common
+# Download the Microsoft repository GPG keys
+wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
+# Register the Microsoft repository GPG keys
+sudo dpkg -i packages-microsoft-prod.deb
+# Update the list of packages after we added packages.microsoft.com
+sudo apt update
+# Install PowerShell
+sudo apt install -y powershell
+# Clean up
+rm packages-microsoft-prod.deb
+# Powershell End
+
+
+### Docker Start
 apter ca-certificates
 apter gnupg 
 apter lsb-release
@@ -118,17 +146,47 @@ apter containerd.io
 apter docker-compose-plugin
 
 sudo docker pull bannsec/bloodhound
-# Docker End
+### Docker End
 
-# Metasploit Start
+### Metasploit Start
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 chmod 755 msfinstall
 ./msfinstall
 rm msfinstall
+### Metasploit End
 
-# Metasploit End
+### ___2john Start
+git clone https://github.com/openwall/john
+mv ~/john/run/ ~/Tools/2John
+rm -r ~/john
+python3 -m pip install pyasn1 # Kirbi2john.py
+### ___2john End
+
+### Burp (I need to make this better)
+wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2022.12.4&type=Linux" -O ~/burp
+bash !$
+rm !$
+###
+
+### Budgie?
+read -p 'Yo? You Want budgie desktop? (y) or (n): ' answer
+if [ "$answer" = "y" ] || [ "$answer" = "Y" ]
+then
+    apter ubuntu-budgie-desktop
+fi
+###
+
+### If its me then change it to me
+if [ "$USER" = "magna" ]
+then
+	wget https://avatars.githubusercontent.com/u/72981738?v=4 -O ~/Pictures/magna.jpg
+	sudo cp ~/Pictures/magna.jpg /var/lib/AccountsService/icons/magna
+	sudo sed -i '/Icon=/c\Icon=/var/lib/AccountsService/icons/'$USER /var/lib/AccountsService/users/$USER
+fi
+###
+
+# Alias(es)
+alias "alias powershell='pwsh'"
 
 # update file locations
-sudo updatedb
-# Just cause
-sudo apt upgrade -y
+sudo updatedb 2>/dev/null
