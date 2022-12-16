@@ -158,14 +158,14 @@ rm msfinstall
 ### ___2john Start
 git clone https://github.com/openwall/john
 mv ~/john/run/ ~/Tools/2John
-rm -r ~/john
+sudo rm -r ~/john
 python3 -m pip install pyasn1 # Kirbi2john.py
 ### ___2john End
 
 ### Burp (I need to make this better)
 wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2022.12.4&type=Linux" -O ~/burp
-bash !$
-rm !$
+bash ~/burp
+rm ~/burp
 ###
 
 ### Budgie?
@@ -190,3 +190,4 @@ alias "alias powershell='pwsh'"
 
 # update file locations
 sudo updatedb 2>/dev/null
+
