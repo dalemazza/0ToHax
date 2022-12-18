@@ -80,7 +80,7 @@ installs+="nmap "
 installs+="hydra "
 installs+="john "
 installs+="hashcat "
-installs+="libnss3-tools"
+installs+="libnss3-tools "
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="locate"
 
