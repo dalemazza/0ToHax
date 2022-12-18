@@ -212,7 +212,7 @@ fi
 ### If its me then change it to me
 if [ "$USER" = "magna" ]
 then
-	wget https://avatars.githubusercontent.com/u/72981738?v=4 -O  ~/Pictures/magna.jpg
+	wget https://avatars.githubusercontent.com/u/72981738?v=4 -O ~/Pictures/magna.jpg
 	sudo cp ~/Pictures/magna.jpg /var/lib/AccountsService/icons/magna
 	sudo sed -i '/Icon=/c\Icon=/var/lib/AccountsService/icons/'$USER /var/lib/AccountsService/users/$USER
 fi
