@@ -18,14 +18,16 @@ alias () {
 }
 
 ## Waiter
+######### CHANGE THIS TO VIEW PIDS ND SHIT
+## Waiter
 waiter() {
     echo "Press any key to continue once burp is ready!"
     while [ true ] ; do
     read -t 3 -n 1
     if [ $? = 0 ] ; then
-    exit ;
+    break ;
     else
-    echo "waiting for the keypress"
+    echo "OI! Load Burp! Then once ready press any key!"
     fi
     done
 }
@@ -75,6 +77,7 @@ installs+="wfuzz "
 installs+="hexedit "
 installs+="binwalk "
 installs+="smbclient "
+installs+="proxychains "
 installs+="unzip "
 installs+="nmap "
 installs+="hydra "
@@ -182,9 +185,17 @@ bash ~/burp
 rm ~/burp
 ###
 
+### Create firefox structure
+firefox &
+pid=$(pidof firefox | rev | cut -d " " -f 1 | rev)
+sleep 10
+sudo kill $pid
+###
+
+
 ### Burp Certs into firefox
 f_profile=$(ls -Al ~/snap/firefox/common/.mozilla/firefox/ | grep ".default" | cut -d " " -f 9)
-waiter()
+waiter
 wget http://burp/cert -O burp.crt -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080
 certutil -A -n "burp" -t "TC,," -i ~/burp.crt -d sql:/home/magna/snap/firefox/common/.mozilla/firefox/$f_profile
 ###
@@ -201,7 +212,7 @@ fi
 ### If its me then change it to me
 if [ "$USER" = "magna" ]
 then
-	wget https://avatars.githubusercontent.com/u/72981738?v=4 -O ~/Pictures/magna.jpg
+	wget https://avatars.githubusercontent.com/u/72981738?v=4 -O  ~/Pictures/magna.jpg
 	sudo cp ~/Pictures/magna.jpg /var/lib/AccountsService/icons/magna
 	sudo sed -i '/Icon=/c\Icon=/var/lib/AccountsService/icons/'$USER /var/lib/AccountsService/users/$USER
 fi
@@ -211,5 +222,5 @@ fi
 alias "alias powershell='pwsh'"
 
 # update file locations
+echo "Updating locate"
 sudo updatedb 2>/dev/null
-
