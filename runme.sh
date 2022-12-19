@@ -102,6 +102,7 @@ python3 -m pip install dirsearch
 python3 -m pip install pyftpdlib
 python3 -m pip install updog
 sudo gem install wpscan
+go install github.com/OJ/gobuster/v3@latest
 # Linux Hacking
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -O ~/Tools/Linux/linpeas.sh
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/Tools/Linux/pspy64
