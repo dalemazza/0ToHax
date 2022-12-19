@@ -85,6 +85,7 @@ installs+="john "
 installs+="hashcat "
 installs+="libnss3-tools "
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
+installs+="sshuttle "
 installs+="locate"
 
 apter $installs
