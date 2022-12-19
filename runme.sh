@@ -87,6 +87,7 @@ installs+="hashcat "
 installs+="libnss3-tools "
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="sshuttle "
+intalls+="golang-go "
 installs+="locate"
 
 apter $installs
@@ -221,10 +222,20 @@ fi
 ###
 
 ### Pivot stuff start
+# Chisel
 wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz -O ~/chisel.gz
 gunzip ~/chisel.gz
 chmod +x ~/chisel
 mv ~/chisel ~/Tools/Pivot
+# Ligolo-ng
+git clone https://github.com/nicocha30/ligolo-ng
+cd ligolo-ng
+go build -o agent cmd/agent/main.go
+go build -o proxy cmd/proxy/main.go
+GOOS=windows go build -o agent.exe cmd/agent/main.go
+GOOS=windows go build -o proxy.exe cmd/proxy/main.go
+cd ..
+mv ligolo-ng/ ~/Tools/Pivot/
 ### Pivot stuff end
 
 
