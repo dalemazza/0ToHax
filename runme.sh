@@ -45,6 +45,7 @@ sudo apt upgrade -y
 mkdir ~/Tools
 mkdir ~/Lists
 mkdir ~/Info
+mkdir ~/Tools/Pivot
 ## Linux
 mkdir ~/Tools/Linux
 ## Windows
@@ -218,6 +219,14 @@ then
 	sudo sed -i '/Icon=/c\Icon=/var/lib/AccountsService/icons/'$USER /var/lib/AccountsService/users/$USER
 fi
 ###
+
+### Pivot stuff start
+wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz -O ~/chisel.gz
+gunzip ~/chisel.gz
+chmod +x ~/chisel
+mv ~/chisel ~/Tools/Pivot
+### Pivot stuff end
+
 
 # Alias(es)
 alias "alias powershell='pwsh'"
