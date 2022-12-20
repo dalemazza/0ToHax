@@ -181,17 +181,17 @@ git clone https://github.com/openwall/john
 mv ~/john/run/ ~/Tools/2John
 sudo rm -r ~/john
 python3 -m pip install pyasn1 # Kirbi2john.py
-### 2john End
-
-### Burp (I need to make this better)
-wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2022.12.4&type=Linux" -O ~/burp
-bash ~/burp
-rm ~/burp
 # John docker cause it never f***** works otherwise
 # https://hub.docker.com/r/phocean/john_the_ripper_jumbo
 sudo docker pull phocean/john_the_ripper_jumbo
 sudo docker image tag phocean/john_the_ripper_jumbo phocean/jtr
 alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro phocean/jtr'
+### john End
+
+### Burp (I need to make this better)
+wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2022.12.4&type=Linux" -O ~/burp
+bash ~/burp
+rm ~/burp
 ###
 
 ### Create firefox structure
