@@ -82,7 +82,7 @@ installs+="proxychains "
 installs+="unzip "
 installs+="nmap "
 installs+="hydra "
-installs+="john "
+installs+="php-cli "
 installs+="hashcat "
 installs+="libnss3-tools "
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
@@ -176,17 +176,22 @@ chmod 755 msfinstall
 rm msfinstall
 ### Metasploit End
 
-### ___2john Start
+### john Start
 git clone https://github.com/openwall/john
 mv ~/john/run/ ~/Tools/2John
 sudo rm -r ~/john
 python3 -m pip install pyasn1 # Kirbi2john.py
-### ___2john End
+### 2john End
 
 ### Burp (I need to make this better)
 wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2022.12.4&type=Linux" -O ~/burp
 bash ~/burp
 rm ~/burp
+# John docker cause it never f***** works otherwise
+# https://hub.docker.com/r/phocean/john_the_ripper_jumbo
+sudo docker pull phocean/john_the_ripper_jumbo
+sudo docker image tag phocean/john_the_ripper_jumbo phocean/jtr
+alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro phocean/jtr'
 ###
 
 ### Create firefox structure
