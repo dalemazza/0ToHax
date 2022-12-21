@@ -265,7 +265,7 @@ fi
 
 # Alias(es)
 aliasA "alias powershell='pwsh'"
-aliasA "alias alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
+aliasA "alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
 
 # Edit Path
 export PATH=$PATH:~/Tools/2John
