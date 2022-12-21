@@ -12,6 +12,11 @@ snapper () {
     sudo snap install $1
 }
 
+## Alias adder
+aliasA () {
+    echo "$@" >> ~/.bashrc
+}
+
 ## Firefox extension adder
 # I couldnt get -install-global-extension to work.. cheers OpenGPT
 fext () {
@@ -47,10 +52,14 @@ cd ~
 
 # Update init
 sudo apt update
-# Just cause
+# Just cus
 sudo apt upgrade -y
 
 # Setup
+## Ctfs
+mkdir ~/Ctfs
+mkdir ~/Ctfs/THM
+mkdir ~/Ctfs/HTB
 ## General
 mkdir ~/Tools
 mkdir ~/Lists
@@ -64,7 +73,6 @@ mkdir ~/Tools/Windows/Generic
 mkdir ~/Tools/Windows/Powershell
 mkdir ~/Tools/Windows/CVEs
 mkdir ~/Tools/Windows/Exes
-
 
 # Quality of life
 installs+="vim "
@@ -175,8 +183,6 @@ sudo apt update
 sudo apt install -y powershell
 # Clean up
 rm packages-microsoft-prod.deb
-# Alias
-alias powershell='pwsh'
 # Powershell End
 
 
@@ -215,7 +221,6 @@ python3 -m pip install pyasn1 # Kirbi2john.py
 # https://hub.docker.com/r/phocean/john_the_ripper_jumbo
 sudo docker pull phocean/john_the_ripper_jumbo
 sudo docker image tag phocean/john_the_ripper_jumbo phocean/jtr
-alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'
 ### john End
 
 ### Burp (I need to make this better)
@@ -257,6 +262,10 @@ then
 	sudo sed -i '/Icon=/c\Icon=/var/lib/AccountsService/icons/'$USER /var/lib/AccountsService/users/$USER
 fi
 ###
+
+# Alias(es)
+aliasA "alias powershell='pwsh'"
+aliasA "alias alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
 
 # Edit Path
 export PATH=$PATH:~/Tools/2John
