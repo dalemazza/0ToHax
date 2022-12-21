@@ -130,6 +130,7 @@ wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/Tools/Linux/pspy64
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32 -O ~/Tools/Linux/pspy32
 git clone https://github.com/arthaud/git-dumper ~/Tools/Linux/Git-Dumper
+python3 -m pip install dulwich
 git clone https://github.com/internetwache/GitTools ~/Tools/Linux/Git-Tools
 git clone https://github.com/nsonaniya2010/SubDomainizer ~/Tools/Linux/SubDomainizer
 # Windows Hacking
