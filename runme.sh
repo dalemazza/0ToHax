@@ -12,8 +12,8 @@ snapper () {
     sudo snap install $1
 }
 
-## Alias adder
-aliasA () {
+## Add to bashrc
+add2bashrc () {
     echo "$@" >> ~/.bashrc
 }
 
@@ -87,6 +87,8 @@ installs+="mono-complete "
 installs+="curl "
 installs+="nfs-common "
 installs+="openvpn "
+installs+="sqlite3 "
+installs+="mysql-client "
 installs+="sqsh "
 installs+="ltrace "
 installs+="strace "
@@ -113,7 +115,7 @@ apter $installs
 # Info
 git clone https://github.com/HitmanAlharbi/Windows-AD-attacking ~/Info/Windows-AD-attacking
 git clone https://github.com/0xJs/RedTeaming_CheatSheet ~/Info/RedTeaming_CheatSheet
-python3 -m pip install  grip
+python3 -m pip install grip
 # General Hacking
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/Lists/SecLists
@@ -264,11 +266,12 @@ fi
 ###
 
 # Alias(es)
-aliasA "alias powershell='pwsh'"
-aliasA "alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
+add2bashrc "alias powershell='pwsh'"
+add2bashrc "alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
 
 # Edit Path
-export PATH=$PATH:~/Tools/2John
+add2bashrc 'export PATH=$PATH:~/Tools/2John'
+add2bashrc 'export PATH=$PATH:~/go/bin'
 
 # Clear un-needed
 sudo apt autoremove
