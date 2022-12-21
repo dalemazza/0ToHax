@@ -12,14 +12,24 @@ snapper () {
     sudo snap install $1
 }
 
-## Alias adder
-alias () {
-    echo "$@" >> ~/.bashrc
+## Firefox extension adder
+# I couldnt get -install-global-extension to work.. cheers OpenGPT
+fext () {
+    echo "Installing $1"
+    firefox $1
+    echo "Press any key to continue once installed"
+    while [ true ] ; do
+    read -t 3 -n 1
+    if [ $? = 0 ] ; then
+    break ;
+    else
+    echo "OI! Add the extension!"
+    fi
+    done
 }
 
 ## Waiter
 ######### CHANGE THIS TO VIEW PIDS ND SHIT
-## Waiter
 waiter() {
     echo "Press any key to continue once burp is ready!"
     while [ true ] ; do
@@ -87,8 +97,9 @@ installs+="hashcat "
 installs+="libnss3-tools "
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="sshuttle "
-intalls+="golang-go "
-installs+="locate"
+installs+="golang-go "
+installs+="ruby-dev "
+installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
 # Info
@@ -98,6 +109,7 @@ python3 -m pip install  grip
 # General Hacking
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/Lists/SecLists
+wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O ~/Lists/rockyou.txt
 python3 -m pip install dirsearch
 python3 -m pip install pyftpdlib
 python3 -m pip install updog
@@ -114,7 +126,6 @@ git clone https://github.com/nsonaniya2010/SubDomainizer ~/Tools/Linux/SubDomain
 snapper crackmapexec
 snapper impacket
 snapper enum4linux
-apter ruby-dev
 sudo gem install evil-winrm
 ## Windows Generic
 git clone https://github.com/SpiderLabs/Responder ~/Tools/Windows/Generic/Responder 
@@ -133,6 +144,23 @@ unzip ~/Tools/Windows/Exes/SysinternalsSuite.zip -d ~/Tools/Windows/Exes/Sysinte
 rm ~/Tools/Windows/Exes/SysinternalsSuite.zip
 
 
+## Pivot stuff start
+# Chisel
+wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz -O ~/chisel.gz
+gunzip ~/chisel.gz
+chmod +x ~/chisel
+mv ~/chisel ~/Tools/Pivot
+# Ligolo-ng
+git clone https://github.com/nicocha30/ligolo-ng
+cd ligolo-ng
+go build -o agent cmd/agent/main.go
+go build -o proxy cmd/proxy/main.go
+GOOS=windows go build -o agent.exe cmd/agent/main.go
+GOOS=windows go build -o proxy.exe cmd/proxy/main.go
+cd ..
+mv ligolo-ng/ ~/Tools/Pivot/
+## Pivot stuff end
+
 
 # Powershell start
 # Install pre-requisite packages.
@@ -147,6 +175,8 @@ sudo apt update
 sudo apt install -y powershell
 # Clean up
 rm packages-microsoft-prod.deb
+# Alias
+alias powershell='pwsh'
 # Powershell End
 
 
@@ -181,11 +211,11 @@ git clone https://github.com/openwall/john
 mv ~/john/run/ ~/Tools/2John
 sudo rm -r ~/john
 python3 -m pip install pyasn1 # Kirbi2john.py
-# John docker cause it never f***** works otherwise
+# John docker cause it never f****** works otherwise
 # https://hub.docker.com/r/phocean/john_the_ripper_jumbo
 sudo docker pull phocean/john_the_ripper_jumbo
 sudo docker image tag phocean/john_the_ripper_jumbo phocean/jtr
-alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro phocean/jtr'
+alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'
 ### john End
 
 ### Burp (I need to make this better)
@@ -194,11 +224,10 @@ bash ~/burp
 rm ~/burp
 ###
 
-### Create firefox structure
-firefox &
-pid=$(pidof firefox | rev | cut -d " " -f 1 | rev)
-sleep 10
-sudo kill $pid
+### Create firefox structure and extensions
+fext https://addons.mozilla.org/en-GB/firefox/addon/foxyproxy-standard/ 
+fext https://addons.mozilla.org/en-GB/firefox/addon/wappalyzer/
+sudo killall firefox
 ###
 
 
@@ -207,7 +236,9 @@ f_profile=$(ls -Al ~/snap/firefox/common/.mozilla/firefox/ | grep ".default" | c
 waiter
 wget http://burp/cert -O burp.crt -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080
 certutil -A -n "burp" -t "TC,," -i ~/burp.crt -d sql:/home/magna/snap/firefox/common/.mozilla/firefox/$f_profile
+sudo killall java # Burp runs via java
 ###
+
 
 
 ### Budgie?
@@ -227,26 +258,11 @@ then
 fi
 ###
 
-### Pivot stuff start
-# Chisel
-wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz -O ~/chisel.gz
-gunzip ~/chisel.gz
-chmod +x ~/chisel
-mv ~/chisel ~/Tools/Pivot
-# Ligolo-ng
-git clone https://github.com/nicocha30/ligolo-ng
-cd ligolo-ng
-go build -o agent cmd/agent/main.go
-go build -o proxy cmd/proxy/main.go
-GOOS=windows go build -o agent.exe cmd/agent/main.go
-GOOS=windows go build -o proxy.exe cmd/proxy/main.go
-cd ..
-mv ligolo-ng/ ~/Tools/Pivot/
-### Pivot stuff end
+# Edit Path
+export PATH=$PATH:~/Tools/2John
 
-
-# Alias(es)
-alias "alias powershell='pwsh'"
+# Clear un-needed
+sudo apt autoremove
 
 # update file locations
 echo "Updating locate"
