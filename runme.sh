@@ -88,15 +88,19 @@ installs+="curl "
 installs+="nfs-common "
 installs+="openvpn "
 installs+="sqlite3 "
+installs+="remmina "
 installs+="mysql-client "
 installs+="sqsh "
 installs+="ltrace "
 installs+="strace "
 installs+="ntpdate "
+installs+="openjdk-11-jdk "
+installs+="socat "
 installs+="ffuf "
 installs+="wfuzz "
 installs+="hexedit "
 installs+="binwalk "
+installs+="fping "
 installs+="smbclient "
 installs+="proxychains "
 installs+="unzip "
@@ -123,6 +127,7 @@ wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rocky
 python3 -m pip install dirsearch
 python3 -m pip install pyftpdlib
 python3 -m pip install updog
+python3 -m pip install uploadserver
 sudo gem install wpscan
 go install github.com/OJ/gobuster/v3@latest
 # Linux Hacking
@@ -137,7 +142,6 @@ git clone https://github.com/nsonaniya2010/SubDomainizer ~/Tools/Linux/SubDomain
 snapper crackmapexec
 snapper impacket
 snapper enum4linux
-sudo gem install evil-winrm
 ## Windows Generic
 git clone https://github.com/SpiderLabs/Responder ~/Tools/Windows/Generic/Responder 
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O ~/Tools/Windows/Generic/kerbrute
@@ -145,6 +149,8 @@ chmod +x ~/Tools/Windows/Generic/kerbrute
 ## Powershell
 wget https://raw.githubusercontent.com/itm4n/PrivescCheck/master/PrivescCheck.ps1 -P ~/Tools/Windows/Powershell/
 git clone https://github.com/PowerShellMafia/PowerSploit ~/Tools/Windows/Powershell/PowerSploit
+git clone https://github.com/Kevin-Robertson/Powermad ~/Tools/Windows/Powershell/Powermad
+git clone https://github.com/BloodHoundAD/BloodHound ~/Tools/Windows/Powershell/Bloodhound
 ## Windows CVEs
 git clone https://github.com/dirkjanm/CVE-2020-1472 ~/Tools/Windows/CVEs/ZeroLogon
 ## Windows Exes
@@ -206,6 +212,7 @@ apter containerd.io
 apter docker-compose-plugin
 
 sudo docker pull bannsec/bloodhound
+sudo docker pull oscarakaelvis/evil-winrm
 ### Docker End
 
 ### Metasploit Start
@@ -219,6 +226,7 @@ rm msfinstall
 git clone https://github.com/openwall/john
 mv ~/john/run/ ~/Tools/2John
 sudo rm -r ~/john
+wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/Tools/2John
 python3 -m pip install pyasn1 # Kirbi2john.py
 # John docker cause it never f****** works otherwise
 # https://hub.docker.com/r/phocean/john_the_ripper_jumbo
@@ -235,6 +243,7 @@ rm ~/burp
 ### Create firefox structure and extensions
 fext https://addons.mozilla.org/en-GB/firefox/addon/foxyproxy-standard/ 
 fext https://addons.mozilla.org/en-GB/firefox/addon/wappalyzer/
+fext https://addons.mozilla.org/en-GB/firefox/addon/cookie-editor/
 sudo killall firefox
 ###
 
@@ -275,7 +284,7 @@ add2bashrc 'export PATH=$PATH:~/Tools/2John'
 add2bashrc 'export PATH=$PATH:~/go/bin'
 
 # Clear un-needed
-sudo apt autoremove
+sudo apt autoremove -y
 
 # update file locations
 echo "Updating locate"
