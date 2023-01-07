@@ -277,7 +277,8 @@ fi
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
-add2bashrc "alias jtr='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
+add2bashrc "alias john='sudo docker run -it --hostname jtr --rm -v $(pwd):/hashes:ro -v ~/Lists:/lists:ro phocean/jtr'"
+add2bashrc "alias bloodhound='xhost + && sudo docker run -it --rm -v /tmp/.X11-unix/:/tmp/.X11-unix -e DISPLAY=$DISPLAY --network host --device /dev/dri/card0 --name bloodhound bannsec/bloodhound'"
 
 # Edit Path
 add2bashrc 'export PATH=$PATH:~/Tools/2John'
