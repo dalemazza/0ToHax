@@ -76,6 +76,7 @@ mkdir ~/tools/windows/powershell
 mkdir ~/tools/windows/cve
 mkdir ~/tools/windows/exes
 mkdir ~/tools/windows/pe
+mkdir ~/tools/windows/impacket
 
 # Quality of life
 installs+="vim "
@@ -186,7 +187,7 @@ unzip ~/tools/pivot/ligolo-ng/windows.zip -d ~/tools/pivot/ligolo-ng
 ## Pivot stuff end
 
 # Powershell start
-snap install powershell
+snap install powershell --classic
 # Powershell End
 
 
@@ -274,12 +275,18 @@ cp -R BloodHoundExampleDB.graphdb/* /var/lib/neo4j/data/databases/graph.db
 neo4j start
 ##bloodhound end
 
+#impacket
+git clone https://github.com/fortra/impacket.git ~/tools/windows/impacket
 
 
 ### Budgie
 apter ubuntu-budgie-desktop
 ###
 
+##evil-winrm
+apt install rubygems
+apt install ruby-dev
+gem install evil-winrm
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
@@ -287,6 +294,7 @@ add2bashrc "alias powershell='pwsh'"
 # Edit Path
 add2bashrc 'export PATH=$PATH:~/tools/2john'
 add2bashrc 'export PATH=$PATH:~/go/bin'
+add2bashrc 'export PATH=$PATH:~/tools/windows/impacket'
 
 # Clear un-needed
 sudo apt autoremove -y
