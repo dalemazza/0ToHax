@@ -117,6 +117,7 @@ installs+="ruby-dev "
 installs+="rubygems "
 installs+="python3-impacket "
 installs+="john "
+installs+="wireshark "
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
