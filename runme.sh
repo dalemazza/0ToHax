@@ -252,7 +252,7 @@ snap install zaproxy --classic
 ###zap end
 
 ##bloodhound
-sudo apt-get install wget curl git
+apt-get install wget curl git
 
 wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
 echo 'deb http://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources.list.d/neo4j.list
@@ -277,6 +277,8 @@ neo4j start
 
 #impacket
 git clone https://github.com/fortra/impacket.git ~/tools/windows/impacket
+
+git clone https://github.com/dalemazza/AD_tools.git ~/tools/windows/generic
 
 
 ### Budgie
