@@ -64,6 +64,7 @@ mkdir ~/ctfs/htb
 mkdir ~/tools
 mkdir ~/lists
 mkdir ~/tools/pivot
+mkdir ~/tools/pivot/ligolo-ng
 mkdir ~/scripts
 ## Linux
 mkdir ~/tools/linux
@@ -82,7 +83,7 @@ installs+="python3 "
 installs+="python3-pip "
 installs+="net-tools "
 installs+="git "
-installs+="termimator "
+installs+="terminator "
 installs+="wireshark "
 installs+="curl "
 installs+="nfs-common "
@@ -113,9 +114,8 @@ installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="sshuttle "
 installs+="golang-go "
 installs+="ruby-dev "
+installs+="rubygems "
 installs+="python3-impacket "
-installs+="enum4linux "
-installs+="evil-winrm "
 installs+="john "
 installs+="locate" # End of list, nae space at the end on purpose
 
@@ -141,7 +141,7 @@ git clone https://github.com/nsonaniya2010/SubDomainizer ~/tools/linux/subdomain
 ## Windows Generic
 git clone https://github.com/SpiderLabs/Responder ~/tools/windows/responder 
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O ~/tools/windows/generic/kerbrute
-chmod +x ~/rools/windows/generic/kerbrute
+chmod +x ~/tools/windows/generic/kerbrute
 ## Powershell
 wget https://raw.githubusercontent.com/itm4n/PrivescCheck/master/PrivescCheck.ps1 -P ~/tools/windows/powershell/
 git clone https://github.com/PowerShellMafia/PowerSploit ~/tools/windows/powershell/powersploit
@@ -157,8 +157,13 @@ git clone https://github.com/ParrotSec/mimikatz ~/tools/windows/exes/mimikatz
 wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe -O ~/tools/windows/pe
 
 ##ffufez
-git clone https://github.com/dalemazza/ffufez.git ~/tools/scripts
+git clone https://github.com/dalemazza/ffufez ~/tools/scripts
 
+#enum4linux
+snap install enum4linux
+
+#evil-winrm
+gem install evil-winrm
 
 
 ## Pivot stuff start
@@ -180,18 +185,7 @@ unzip ~/tools/pivot/ligolo-ng/windows.zip -d ~/tools/pivot/ligolo-ng
 ## Pivot stuff end
 
 # Powershell start
-# Install pre-requisite packages.
-sudo apt-get install -y wget apt-transport-https software-properties-common
-# Download the Microsoft repository GPG keys
-wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
-# Register the Microsoft repository GPG keys
-sudo dpkg -i packages-microsoft-prod.deb
-# Update the list of packages after we added packages.microsoft.com
-sudo apt update
-# Install PowerShell
-sudo apt install -y powershell
-# Clean up
-rm packages-microsoft-prod.deb
+snap install powershell
 # Powershell End
 
 
