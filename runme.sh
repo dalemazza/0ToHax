@@ -280,6 +280,9 @@ git clone https://github.com/fortra/impacket.git ~/tools/windows/impacket
 
 git clone https://github.com/dalemazza/AD_tools.git ~/tools/windows/generic
 
+##crackmapexec
+snap install crackmapexec
+
 
 ### Budgie
 apter ubuntu-budgie-desktop
