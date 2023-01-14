@@ -187,7 +187,7 @@ unzip ~/tools/pivot/ligolo-ng/windows.zip -d ~/tools/pivot/ligolo-ng
 ## Pivot stuff end
 
 # Powershell start
-snap install powershell --classic
+sudo snap install powershell --classic
 # Powershell End
 
 
@@ -234,6 +234,7 @@ rm ~/burp
 fext https://addons.mozilla.org/en-GB/firefox/addon/foxyproxy-standard/ 
 fext https://addons.mozilla.org/en-GB/firefox/addon/wappalyzer/
 fext https://addons.mozilla.org/en-GB/firefox/addon/cookie-editor/
+fext https://addons.mozilla.org/en-GB/firefox/addon/bitwarden/
 sudo killall firefox
 ###
 
@@ -260,8 +261,8 @@ echo "deb http://httpredir.debian.org/debian jessie-backports main" | sudo tee -
 
 
 ##bloodhound
-sudo apt-get install openjdk-8-jdk openjdk-8-jre
-sudo apt-get install neo4j
+sudo apt install -y openjdk-8-jdk openjdk-8-jre
+sudo apt install -y neo4j
 echo "dbms.active_database=graph.db" >> /etc/neo4j/neo4j.conf
 echo "dbms.connector.http.address=0.0.0.0:7474" >> /etc/neo4j/neo4j.conf
 echo "dbms.connector.bolt.address=0.0.0.0:7687" >> /etc/neo4j/neo4j.conf
@@ -289,9 +290,9 @@ apter ubuntu-budgie-desktop
 ###
 
 ##evil-winrm
-apt install rubygems
-apt install ruby-dev
-gem install evil-winrm
+apt install -y rubygems
+apt install -y ruby-dev
+sudo gem install evil-winrm
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
@@ -299,7 +300,8 @@ add2bashrc "alias powershell='pwsh'"
 # Edit Path
 add2bashrc 'export PATH=$PATH:~/tools/2john'
 add2bashrc 'export PATH=$PATH:~/go/bin'
-add2bashrc 'export PATH=$PATH:~/tools/windows/impacket'
+add2bashrc 'export PATH=$PATH:~/tools/windows/impacket/examples'
+add2bashrc 'export PATH=$PATH:~/tools/scripts'
 
 # Clear un-needed
 sudo apt autoremove -y
