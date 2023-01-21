@@ -291,6 +291,9 @@ apter freerdp2-x11
 apter ubuntu-budgie-desktop
 ###
 
+# rlwrap
+apt install -y rlwrap
+
 ##evil-winrm
 apt install -y rubygems
 apt install -y ruby-dev
