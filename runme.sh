@@ -119,6 +119,7 @@ installs+="rubygems "
 installs+="python3-impacket "
 installs+="john "
 installs+="wireshark "
+installs+="xsltproc "
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
