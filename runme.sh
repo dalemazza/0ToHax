@@ -66,6 +66,7 @@ mkdir ~/lists
 mkdir ~/tools/pivot
 mkdir ~/tools/pivot/ligolo-ng
 mkdir ~/scripts
+mkdir ~/tools/enumeration
 ## Linux
 mkdir ~/tools/linux
 mkdir ~/tools/linux/pe
@@ -120,6 +121,7 @@ installs+="python3-impacket "
 installs+="john "
 installs+="wireshark "
 installs+="xsltproc "
+installs+="samba "
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
@@ -133,6 +135,9 @@ python3 -m pip install updog
 python3 -m pip install uploadserver
 sudo gem install wpscan
 go install github.com/OJ/gobuster/v3@latest
+git clone https://github.com/cddmp/enum4linux-ng.git -O ~/tools/enumeration
+
+
 # Linux Hacking
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -O ~/tools/linux/linpeas.sh
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/tools/linux/pspy64
