@@ -122,6 +122,7 @@ installs+="john "
 installs+="wireshark "
 installs+="xsltproc "
 installs+="samba "
+installs+="snmp "
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
