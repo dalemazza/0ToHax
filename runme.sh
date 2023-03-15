@@ -53,7 +53,7 @@ cd ~
 # Update init
 sudo apt update
 # Just cus
-sudo apt upgrade -y
+#sudo apt upgrade -y
 
 # Setup
 ## Ctfs
