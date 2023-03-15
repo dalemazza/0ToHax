@@ -124,6 +124,7 @@ installs+="xsltproc "
 installs+="samba "
 installs+="snmp "
 installs+="whatweb "
+install+="whois "
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
