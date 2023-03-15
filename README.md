@@ -10,11 +10,11 @@ Cause I cba with ugly terminals, toooooo many tools and trying to find stuff.
 # How to use
 ## Lazy
 ```bash
-curl https://raw.githubusercontent.com/magna-sec/0ToHax/main/runme.sh | bash
+curl https://raw.githubusercontent.com/dalemazza/0ToHax/main/runme.sh | bash
 ```
 ## Unlazy
 ```bash
-wget https://raw.githubusercontent.com/magna-sec/0ToHax/main/runme.sh
+wget https://raw.githubusercontent.com/dalemazza/0ToHax/main/runme.sh
 # Read
 bash runme.sh
 ```
