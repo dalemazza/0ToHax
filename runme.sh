@@ -4,7 +4,7 @@ installs=""
 
 ## Apt installer
 apter () {
-    sudo apt install -qq -y $@
+    sudo apt install -y $@
 }
 
 ## Snap installer
@@ -99,7 +99,6 @@ installs+="strace "
 installs+="ntpdate "
 installs+="openjdk-11-jdk "
 installs+="socat "
-installs+="ffuf "
 installs+="wfuzz "
 installs+="hexedit "
 installs+="binwalk "
@@ -125,6 +124,7 @@ installs+="samba "
 installs+="snmp "
 installs+="whatweb "
 install+="whois "
+install+="python3-pip"
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
