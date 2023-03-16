@@ -113,7 +113,7 @@ installs+="hashcat "
 installs+="libnss3-tools "
 installs+="nikto " # Yes I still scan with nikto, it finds stuff... sometimes
 installs+="sshuttle "
-installs+="golang-go "
+#installs+="golang-go "
 installs+="ruby-dev "
 installs+="rubygems "
 installs+="python3-impacket "
@@ -124,21 +124,25 @@ installs+="samba "
 installs+="snmp "
 installs+="whatweb "
 installs+="whois "
-installs+="python3-pip"
 installs+="locate" # End of list, nae space at the end on purpose
+
+## install go
+curl -OL https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xvf go1.20.2.linux-amd64.tar.gz
+add2bashrc 'export PATH=$PATH:/usr/local/go/bin'
+
 
 apter $installs
 # General Hacking
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/lists/seclists
 wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O ~/lists/rockyou.txt
-python3 -m pip install dirsearch
-python3 -m pip install pyftpdlib
-python3 -m pip install updog
-python3 -m pip install uploadserver
+sudo pip3 install dirsearch
+sudo pip3 install pyftpdlib
+sudo pip3 install updog
+sudo pip3 install uploadserver
 sudo gem install wpscan
-go install github.com/OJ/gobuster/v3@latest
-git clone https://github.com/cddmp/enum4linux-ng.git -O ~/tools/enumeration
+git clone https://github.com/cddmp/enum4linux-ng.git ~/tools/enumeration
 
 
 # Linux Hacking
@@ -146,7 +150,6 @@ wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/tools/linux/pspy64
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32 -O ~/tools/linux/pspy32
 git clone https://github.com/arthaud/git-dumper ~/tools/linux/git-dumper
-python3 -m pip install dulwich
 git clone https://github.com/internetwache/GitTools ~/tools/linux/git-tools
 git clone https://github.com/nsonaniya2010/SubDomainizer ~/tools/linux/subdomainizer
 ## Windows Generic
@@ -187,7 +190,6 @@ mv ~/chisel ~/tools/pivot
 wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.3.3/ligolo-ng_agent_0.3.3_Linux_64bit.tar.gz -O ~/tools/pivot/ligolo-ng/linux.tar.gz
 wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.3.3/ligolo-ng_agent_0.3.3_Windows_64bit.zip -O ~/tools/pivot/ligolo-ng/windows.zip
 wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.3.3/ligolo-ng_proxy_0.3.3_Linux_64bit.tar.gz -O ~/tools/pivot/ligolo-ng/proxy.tar.gz
-
 tar -xvf ~/tools/pivot/ligolo-ng/linux.tar.gz -C ~/tools/pivot/ligolo-ng
 tar -xvf ~/tools/pivot/ligolo-ng/proxy.tar.gz -C ~/tools/pivot/ligolo-ng
 unzip -o ~/tools/pivot/ligolo-ng/windows.zip -d ~/tools/pivot/ligolo-ng
@@ -230,7 +232,6 @@ git clone https://github.com/openwall/john
 mv ~/john/run/ ~/tools/2john
 sudo rm -r ~/john
 wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/tools/2john
-python3 -m pip install pyasn1
 
 
 ### Burp (I need to make this better)
@@ -252,7 +253,7 @@ sudo killall firefox
 f_profile=$(ls -Al ~/snap/firefox/common/.mozilla/firefox/ | grep ".default" | cut -d " " -f 9)
 waiter
 wget http://burp/cert -O burp.crt -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080
-certutil -A -n "burp" -t "TC,," -i ~/burp.crt -d sql:/home/magna/snap/firefox/common/.mozilla/firefox/$f_profile
+certutil -A -n "burp" -t "TC,," -i ~/burp.crt -d sql:/home/dalemazza/snap/firefox/common/.mozilla/firefox/$f_profile
 sudo killall java # Burp runs via java
 ###
 
@@ -271,7 +272,14 @@ echo "deb http://httpredir.debian.org/debian jessie-backports main" | sudo tee -
 
 ##bloodhound
 sudo apt install -y openjdk-8-jdk openjdk-8-jre
-sudo apt install -y neo4j
+## neo4j
+curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key |sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
+echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable 4.1" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
+sudo apt update
+sudo apt install neo4j
+sudo systemctl enable neo4j.service
+sudo systemctl start neo4j.service
+##
 echo "dbms.active_database=graph.db" >> /etc/neo4j/neo4j.conf
 echo "dbms.connector.http.address=0.0.0.0:7474" >> /etc/neo4j/neo4j.conf
 echo "dbms.connector.bolt.address=0.0.0.0:7687" >> /etc/neo4j/neo4j.conf
@@ -301,11 +309,11 @@ apter ubuntu-budgie-desktop
 ###
 
 # rlwrap
-apt install -y rlwrap
+apter rlwrap
 
 ##evil-winrm
-apt install -y rubygems
-apt install -y ruby-dev
+apter rubygems
+apter ruby-dev
 sudo gem install evil-winrm
 
 # Alias(es)
