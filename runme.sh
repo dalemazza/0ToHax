@@ -134,8 +134,8 @@ apter $installs
 curl -OL https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.20.2.linux-amd64.tar.gz
 add2bashrc 'export PATH=$PATH:/usr/local/go/bin'
-sleep 4
-add2bashrc 'export PATH=$PATH:/usr/local/go/bin'
+source ~/.bashrc
+
 
 # General Hacking
 apter sqlmap
@@ -143,7 +143,6 @@ git clone https://github.com/danielmiessler/SecLists ~/lists/seclists
 wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O ~/lists/rockyou.txt
 sudo pip3 install dirsearch
 sudo pip3 install pyftpdlib
-sudo pip3 install updog
 sudo pip3 install uploadserver
 sudo gem install wpscan
 git clone https://github.com/cddmp/enum4linux-ng.git ~/tools/enumeration
@@ -174,7 +173,8 @@ git clone https://github.com/ParrotSec/mimikatz ~/tools/windows/exes/mimikatz
 # Windows PE
 wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe -O ~/tools/windows/pe
 
-##ffufez
+##ffuf
+go install github.com/ffuf/ffuf/v2@latest
 git clone https://github.com/dalemazza/ffufez ~/tools/scripts
 
 #enum4linux
