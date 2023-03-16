@@ -126,13 +126,16 @@ installs+="whatweb "
 installs+="whois "
 installs+="locate" # End of list, nae space at the end on purpose
 
+
+apter $installs
+
+
 ## install go
 curl -OL https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.20.2.linux-amd64.tar.gz
 add2bashrc 'export PATH=$PATH:/usr/local/go/bin'
 
 
-apter $installs
 # General Hacking
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/lists/seclists
