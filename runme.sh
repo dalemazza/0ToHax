@@ -123,8 +123,8 @@ installs+="xsltproc "
 installs+="samba "
 installs+="snmp "
 installs+="whatweb "
-install+="whois "
-install+="python3-pip"
+installs+="whois "
+installs+="python3-pip"
 installs+="locate" # End of list, nae space at the end on purpose
 
 apter $installs
@@ -190,7 +190,7 @@ wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.3.3/ligolo-ng_p
 
 tar -xvf ~/tools/pivot/ligolo-ng/linux.tar.gz -C ~/tools/pivot/ligolo-ng
 tar -xvf ~/tools/pivot/ligolo-ng/proxy.tar.gz -C ~/tools/pivot/ligolo-ng
-unzip ~/tools/pivot/ligolo-ng/windows.zip -d ~/tools/pivot/ligolo-ng
+unzip -o ~/tools/pivot/ligolo-ng/windows.zip -d ~/tools/pivot/ligolo-ng
 
 
 ## Pivot stuff end
