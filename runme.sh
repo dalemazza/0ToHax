@@ -134,7 +134,8 @@ apter $installs
 curl -OL https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.20.2.linux-amd64.tar.gz
 add2bashrc 'export PATH=$PATH:/usr/local/go/bin'
-
+sleep 4
+add2bashrc 'export PATH=$PATH:/usr/local/go/bin'
 
 # General Hacking
 apter sqlmap
@@ -279,7 +280,7 @@ sudo apt install -y openjdk-8-jdk openjdk-8-jre
 curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key |sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
 echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable 4.1" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
 sudo apt update
-sudo apt install neo4j
+sudo apt install -y neo4j
 sudo systemctl enable neo4j.service
 sudo systemctl start neo4j.service
 ##
