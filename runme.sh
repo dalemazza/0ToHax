@@ -124,6 +124,7 @@ installs+="samba "
 installs+="snmp "
 installs+="whatweb "
 installs+="whois "
+installs+="rdesktop "
 installs+="locate" # End of list, nae space at the end on purpose
 
 
