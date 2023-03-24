@@ -117,7 +117,7 @@ installs+="sshuttle "
 installs+="ruby-dev "
 installs+="rubygems "
 installs+="python3-impacket "
-installs+="john "
+#installs+="john "
 installs+="wireshark "
 installs+="xsltproc "
 installs+="samba "
@@ -237,6 +237,7 @@ git clone https://github.com/openwall/john
 mv ~/john/run/ ~/tools/2john
 sudo rm -r ~/john
 wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/tools/2john
+snap install john-the-ripper
 
 
 ### Burp (I need to make this better)
@@ -266,6 +267,9 @@ sudo killall java # Burp runs via java
 snap install zaproxy --classic
 
 ###zap end
+
+### pypykatz
+pip3 install pypykatz
 
 ##bloodhound
 apt-get install wget curl git
