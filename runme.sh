@@ -142,6 +142,7 @@ source ~/.bashrc
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/lists/seclists
 wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O ~/lists/rockyou.txt
+git clone https://github.com/drtychai/wordlists.git ~/lists/
 sudo pip3 install dirsearch
 sudo pip3 install pyftpdlib
 sudo pip3 install uploadserver
