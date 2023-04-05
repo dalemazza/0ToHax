@@ -326,13 +326,14 @@ sudo gem install evil-winrm
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
+add2bashrc "alias files='echo Serving /var/www;sudo python3 -m http.server --directory /var/www 80'"
+add2bashrc "alias filesad='echo Serving /var/www/ad;sudo python3 -m http.server --directory /var/www/ad 80'"
 
 # Edit Path
 add2bashrc 'export PATH=$PATH:~/tools/2john'
 add2bashrc 'export PATH=$PATH:~/go/bin'
 add2bashrc 'export PATH=$PATH:~/tools/windows/impacket/examples'
 add2bashrc 'export PATH=$PATH:~/tools/scripts'
-
 # Clear un-needed
 sudo apt autoremove -y
 
