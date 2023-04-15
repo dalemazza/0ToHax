@@ -157,7 +157,7 @@ git clone https://github.com/arthaud/git-dumper ~/tools/linux/git-dumper
 git clone https://github.com/internetwache/GitTools ~/tools/linux/git-tools
 git clone https://github.com/nsonaniya2010/SubDomainizer ~/tools/linux/subdomainizer
 ## Windows Generic
-git clone https://github.com/SpiderLabs/Responder ~/tools/windows/responder 
+git clone https://github.com/lgandx/Responder.git ~/tools/windows/responder
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -O ~/tools/windows/generic/kerbrute
 chmod +x ~/tools/windows/generic/kerbrute
 ## Powershell
