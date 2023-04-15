@@ -123,6 +123,7 @@ installs+="snmp "
 installs+="whatweb "
 installs+="whois "
 installs+="rdesktop "
+installs+="libssl-dev"
 installs+="locate" # End of list, nae space at the end on purpose
 
 
@@ -232,11 +233,12 @@ rm msfinstall
 ### Metasploit End
 
 ### john Start
-git clone https://github.com/openwall/john
-mv ~/john/run/ ~/tools/2john
-sudo rm -r ~/john
+git clone https://github.com/openwall/john ~/tools/
+cd ~/tools/john/src
+./configure && make -sj4
+
 wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/tools/2john
-snap install john-the-ripper
+
 
 
 ### Burp (I need to make this better)
@@ -328,6 +330,7 @@ sudo gem install evil-winrm
 add2bashrc "alias powershell='pwsh'"
 add2bashrc "alias files='echo Serving /var/www;sudo python3 -m http.server --directory /var/www 80'"
 add2bashrc "alias filesad='echo Serving /var/www/ad;sudo python3 -m http.server --directory /var/www/ad 80'"
+add2bashrc "alias john='~/tools/john/run/john'"
 
 # Edit Path
 add2bashrc 'export PATH=$PATH:~/tools/2john'
