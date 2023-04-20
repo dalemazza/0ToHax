@@ -183,6 +183,14 @@ snap install enum4linux
 
 #evil-winrm
 gem install evil-winrm
+##Fixing the remote path tab complete
+cd /tmp
+wget https://ftp.ruby-lang.org/pub/ruby/2.7/ruby-2.7.3.tar.gz
+tar -xf ruby-2.7.3.tar.gz
+cd ruby-2.7.3/ext/readline
+ruby ./extconf.rb
+make
+sudo cp -f readline.so /usr/lib/x86_64-linux-gnu/ruby/3.0.0/readline.so
 
 
 ## Pivot stuff start
