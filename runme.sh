@@ -336,7 +336,6 @@ apter rlwrap
 ##evil-winrm
 apter rubygems
 apter ruby-dev
-sudo gem install evil-winrm
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
