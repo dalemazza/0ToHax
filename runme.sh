@@ -151,6 +151,7 @@ git clone https://github.com/cddmp/enum4linux-ng.git ~/tools/enumeration
 
 # Linux Hacking
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -O ~/tools/linux/linpeas.sh
+wget https://github.com/carlospolop/PEASS-ng/releases/download/20230419-58ad97a0/winPEASany.exe -O ~/tools/windows/pe
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O ~/tools/linux/pspy64
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32 -O ~/tools/linux/pspy32
 git clone https://github.com/arthaud/git-dumper ~/tools/linux/git-dumper
@@ -177,6 +178,9 @@ wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64
 ##ffuf
 go install github.com/ffuf/ffuf/v2@latest
 git clone https://github.com/dalemazza/ffufez ~/tools/scripts
+
+#Seatbelt
+wget https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe -O ~/tools/windows/pe
 
 #enum4linux
 snap install enum4linux
