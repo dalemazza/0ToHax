@@ -34,7 +34,6 @@ fext () {
 }
 
 ## Waiter
-######### CHANGE THIS TO VIEW PIDS ND SHIT
 waiter() {
     echo "Press any key to continue once burp is ready!"
     while [ true ] ; do
