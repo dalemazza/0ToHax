@@ -124,6 +124,7 @@ installs+="whatweb "
 installs+="whois "
 installs+="rdesktop "
 installs+="libssl-dev"
+installs+="rlwrap"
 installs+="locate" # End of list, nae space at the end on purpose
 
 
@@ -229,7 +230,6 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 
 # Update init
 sudo apt update
-
 apter docker-ce 
 apter docker-ce-cli
 apter containerd.io
@@ -248,7 +248,6 @@ rm msfinstall
 git clone https://github.com/openwall/john ~/tools/
 cd ~/tools/john/src
 ./configure && make -sj4
-
 wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/tools/2john
 
 
@@ -317,7 +316,6 @@ neo4j start
 
 #impacket
 git clone https://github.com/fortra/impacket.git ~/tools/windows/impacket
-
 git clone https://github.com/dalemazza/AD_tools.git ~/tools/windows/generic
 
 ##crackmapexec
@@ -329,13 +327,6 @@ apter freerdp2-x11
 ### Budgie
 apter ubuntu-budgie-desktop
 ###
-
-# rlwrap
-apter rlwrap
-
-##evil-winrm
-apter rubygems
-apter ruby-dev
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
