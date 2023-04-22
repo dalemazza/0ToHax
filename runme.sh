@@ -76,6 +76,7 @@ mkdir ~/tools/windows/powershell
 mkdir ~/tools/windows/cve
 mkdir ~/tools/windows/exes
 mkdir ~/tools/windows/pe
+mkdir ~/tools/windows/pe/sebackupprivilege
 mkdir ~/tools/windows/impacket
 
 # Quality of life
@@ -174,6 +175,8 @@ git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries ~/tools/wi
 git clone https://github.com/ParrotSec/mimikatz ~/tools/windows/exes/mimikatz
 # Windows PE
 wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe -O ~/tools/windows/pe
+wget https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true -O ~/tools/windows/sebackupprivilege
+wget https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true -O ~/tools/windows/sebackupprivilege
 
 ##ffuf
 go install github.com/ffuf/ffuf/v2@latest
