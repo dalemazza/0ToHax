@@ -64,11 +64,13 @@ mkdir ~/tools
 mkdir ~/lists
 mkdir ~/tools/pivot
 mkdir ~/tools/pivot/ligolo-ng
+mkdir ~/tools/john
 mkdir ~/scripts
 mkdir ~/tools/enumeration
 ## Linux
 mkdir ~/tools/linux
 mkdir ~/tools/linux/pe
+mkdir ~/tools/shells
 ## Windows
 mkdir ~/tools/windows
 mkdir ~/tools/windows/generic
@@ -123,8 +125,8 @@ installs+="snmp "
 installs+="whatweb "
 installs+="whois "
 installs+="rdesktop "
-installs+="libssl-dev"
-installs+="rlwrap"
+installs+="libssl-dev "
+installs+="rlwrap "
 installs+="locate" # End of list, nae space at the end on purpose
 
 
@@ -142,10 +144,8 @@ source ~/.bashrc
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/lists/seclists
 wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O ~/lists/rockyou.txt
-git clone https://github.com/drtychai/wordlists.git ~/lists/
-sudo pip3 install dirsearch
+git clone https://github.com/drtychai/wordlists.git ~/lists
 sudo pip3 install pyftpdlib
-sudo pip3 install uploadserver
 sudo gem install wpscan
 git clone https://github.com/cddmp/enum4linux-ng.git ~/tools/enumeration
 
@@ -247,7 +247,12 @@ rm msfinstall
 ### Metasploit End
 
 ### john Start
-git clone https://github.com/openwall/john ~/tools/
+## requirements
+sudo apt-get -y install git build-essential libssl-dev zlib1g-dev
+sudo apt-get -y install yasm pkg-config libgmp-dev libpcap-dev libbz2-dev
+sudo apt-get -y install nvidia-opencl-dev
+
+git clone https://github.com/openwall/john -b bleeding-jumbo ~/tools/john
 cd ~/tools/john/src
 ./configure && make -sj4
 wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/tools/2john
@@ -260,22 +265,9 @@ bash ~/burp
 rm ~/burp
 ###
 
-### Create firefox structure and extensions
-fext https://addons.mozilla.org/en-GB/firefox/addon/foxyproxy-standard/ 
-fext https://addons.mozilla.org/en-GB/firefox/addon/wappalyzer/
-fext https://addons.mozilla.org/en-GB/firefox/addon/cookie-editor/
-fext https://addons.mozilla.org/en-GB/firefox/addon/bitwarden/
-sudo killall firefox
-###
+## conpty
+git clone https://github.com/antonioCoco/ConPtyShell.git ~/tools/shells/windows/
 
-
-### Burp Certs into firefox
-f_profile=$(ls -Al ~/snap/firefox/common/.mozilla/firefox/ | grep ".default" | cut -d " " -f 9)
-waiter
-wget http://burp/cert -O burp.crt -e use_proxy=yes -e http_proxy=http://127.0.0.1:8080
-certutil -A -n "burp" -t "TC,," -i ~/burp.crt -d sql:/home/dalemazza/snap/firefox/common/.mozilla/firefox/$f_profile
-sudo killall java # Burp runs via java
-###
 
 ###zap start
 snap install zaproxy --classic
