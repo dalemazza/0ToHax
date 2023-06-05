@@ -321,6 +321,10 @@ apter freerdp2-x11
 # nmapautomator
 git clone https://github.com/21y4d/nmapAutomator.git ~/tools/enumeration
 
+## clone stuff i need
+
+git clone https://github.com/dalemazza/AD_tools.git ~/tools
+
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
 add2bashrc "alias files='echo Serving /var/www;sudo python3 -m http.server --directory /var/www 80'"
