@@ -326,9 +326,8 @@ snap install crackmapexec
 #xfreerdp
 apter freerdp2-x11
 
-### Budgie
-apter ubuntu-budgie-desktop
-###
+# nmapautomator
+git clone https://github.com/21y4d/nmapAutomator.git ~/tools/enumeration
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
@@ -341,6 +340,8 @@ add2bashrc 'export PATH=$PATH:~/tools/2john'
 add2bashrc 'export PATH=$PATH:~/go/bin'
 add2bashrc 'export PATH=$PATH:~/tools/windows/impacket/examples'
 add2bashrc 'export PATH=$PATH:~/tools/scripts'
+add2bashrc 'export PATH=$PATH:~/tools/enumeration/nmapAutomator'
+
 # Clear un-needed
 sudo apt autoremove -y
 
