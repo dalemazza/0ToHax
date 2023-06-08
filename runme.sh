@@ -17,21 +17,6 @@ add2bashrc () {
     echo "$@" >> ~/.bashrc
 }
 
-## Firefox extension adder
-# I couldnt get -install-global-extension to work.. cheers OpenGPT
-fext () {
-    echo "Installing $1"
-    firefox $1
-    echo "Press any key to continue once installed"
-    while [ true ] ; do
-    read -t 3 -n 1
-    if [ $? = 0 ] ; then
-    break ;
-    else
-    echo "OI! Add the extension!"
-    fi
-    done
-}
 
 ## Waiter
 waiter() {
@@ -144,10 +129,10 @@ source ~/.bashrc
 apter sqlmap
 git clone https://github.com/danielmiessler/SecLists ~/lists/seclists
 wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O ~/lists/rockyou.txt
-git clone https://github.com/drtychai/wordlists.git ~/lists
-sudo pip3 install pyftpdlib
-sudo gem install wpscan
-git clone https://github.com/cddmp/enum4linux-ng.git ~/tools/enumeration
+git clone https://github.com/drtychai/wordlists.git ~/lists/wordlists
+pip3 install pyftpdlib
+gem install wpscan
+git clone https://github.com/cddmp/enum4linux-ng.git ~/tools/enumeration/enum4linux-ng
 
 
 # Linux Hacking
@@ -174,16 +159,16 @@ git clone https://github.com/dirkjanm/CVE-2020-1472 ~/tools/windows/cves/zerolog
 git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries ~/tools/windows/exes/ghostpack-CompiledBinaries
 git clone https://github.com/ParrotSec/mimikatz ~/tools/windows/exes/mimikatz
 # Windows PE
-wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe -O ~/tools/windows/pe
+wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe -O ~/tools/windows/pe/printspoofer.exe
 wget https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true -O ~/tools/windows/sebackupprivilege
 wget https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true -O ~/tools/windows/sebackupprivilege
 
 ##ffuf
 go install github.com/ffuf/ffuf/v2@latest
-git clone https://github.com/dalemazza/ffufez ~/tools/scripts
+git clone https://github.com/dalemazza/ffufez ~/tools/scripts/ffufez
 
 #Seatbelt
-wget https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe -O ~/tools/windows/pe
+wget https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe -O ~/tools/windows/pe/seatbelt.exe
 
 #enum4linux
 snap install enum4linux
@@ -258,13 +243,6 @@ cd ~/tools/john/src
 wget https://github.com/Sjord/jwtcrack/raw/master/jwt2john.py -O ~/tools/2john
 
 
-
-### Burp (I need to make this better)
-wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2022.12.4&type=Linux" -O ~/burp
-bash ~/burp
-rm ~/burp
-###
-
 ## conpty
 git clone https://github.com/antonioCoco/ConPtyShell.git ~/tools/shells/windows/
 
@@ -300,17 +278,16 @@ echo "dbms.connector.http.address=0.0.0.0:7474" >> /etc/neo4j/neo4j.conf
 echo "dbms.connector.bolt.address=0.0.0.0:7687" >> /etc/neo4j/neo4j.conf
 echo "dbms.allow_format_migration=true" >> /etc/neo4j/neo4j.conf
 
-git clone https://github.com/adaptivethreat/BloodHound.git ~/tools/windows/generic
-cd ~/tools/windows/generic/BloodHound
+git clone https://github.com/adaptivethreat/BloodHound.git ~/tools/windows/generic/bloodhound
+cd ~/tools/windows/generic/bloodHound
 mkdir /var/lib/neo4j/data/databases/graph.db
-cd BloodHound/
+cd bloodHound/
 cp -R BloodHoundExampleDB.graphdb/* /var/lib/neo4j/data/databases/graph.db
 neo4j start
 ##bloodhound end
 
 #impacket
 git clone https://github.com/fortra/impacket.git ~/tools/windows/impacket
-git clone https://github.com/dalemazza/AD_tools.git ~/tools/windows/generic
 
 ##crackmapexec
 snap install crackmapexec
@@ -319,11 +296,11 @@ snap install crackmapexec
 apter freerdp2-x11
 
 # nmapautomator
-git clone https://github.com/21y4d/nmapAutomator.git ~/tools/enumeration
+git clone https://github.com/21y4d/nmapAutomator.git ~/tools/enumeration/nmapautomator
 
 ## clone stuff i need
 
-git clone https://github.com/dalemazza/AD_tools.git ~/tools
+git clone https://github.com/dalemazza/AD_tools.git ~/tools/ad_tools
 
 # Alias(es)
 add2bashrc "alias powershell='pwsh'"
@@ -336,7 +313,7 @@ add2bashrc 'export PATH=$PATH:~/tools/2john'
 add2bashrc 'export PATH=$PATH:~/go/bin'
 add2bashrc 'export PATH=$PATH:~/tools/windows/impacket/examples'
 add2bashrc 'export PATH=$PATH:~/tools/scripts'
-add2bashrc 'export PATH=$PATH:~/tools/enumeration/nmapAutomator'
+add2bashrc 'export PATH=$PATH:~/tools/enumeration/nmapautomator'
 
 # Clear un-needed
 sudo apt autoremove -y
