@@ -296,7 +296,7 @@ snap install crackmapexec
 apter freerdp2-x11
 
 # nmapautomator
-git clone https://github.com/21y4d/nmapAutomator.git ~/tools/enumeration/nmapautomator
+git clone https://github.com/21y4d/nmapAutomator.git ~/tools/nmapautomator
 
 ## clone stuff i need
 
