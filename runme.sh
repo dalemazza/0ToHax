@@ -318,6 +318,10 @@ add2bashrc 'export PATH=$PATH:~/tools/enumeration/nmapautomator'
 # Clear un-needed
 sudo apt autoremove -y
 
+#Fix firefox
+sudo snap remove firefox
+snap install chromium
+
 # update file locations
 echo "Updating locate"
 sudo updatedb 2>/dev/null
